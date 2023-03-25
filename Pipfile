@@ -8,7 +8,7 @@ pandas = "*"
 requests = "*"
 pydantic = "*"
 loguru = "*"
-sqlalchemy = "*"
+sqlalchemy = "==1.4.46"
 tqdm = "*"
 pymysql = "*"
 financialdata = {editable = true, path = "."}
