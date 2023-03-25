@@ -1,1 +1,2 @@
-# fintech-learn
+# FinMindBook
+FinMind Book
