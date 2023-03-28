@@ -13,6 +13,8 @@ tqdm = "*"
 pymysql = "*"
 financialdata = {editable = true, path = "."}
 celery = "*"
+fastapi = "==0.63.0"
+uvicorn = "==0.14.0"
 
 [dev-packages]
 black = "*"
