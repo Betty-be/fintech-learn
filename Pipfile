@@ -4,13 +4,13 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-pandas = "*"
+pandas = "==1.1.5"
 requests = "*"
 pydantic = "*"
 loguru = "*"
-sqlalchemy = "==1.4.46"
+sqlalchemy = "==1.4.20"
 tqdm = "*"
-pymysql = "*"
+pymysql = "==1.0.2"
 financialdata = {editable = true, path = "."}
 celery = "*"
 fastapi = "==0.63.0"
