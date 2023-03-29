@@ -1,11 +1,17 @@
 version: '3.0'
 services:
   api:
-    image: api:7.2.2
+    image: linsamtw/api:7.2.2
     ports:
         - 8888:8888
     hostname: "api"
     restart: always
+    # swarm 設定
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints: [node.labels.api == true]
     environment:
       - TZ=Asia/Taipei
     networks:

@@ -1,9 +1,0 @@
-README.md
-setup.py
-src/taifex_crawler.py
-src/tpex_crawler.py
-src/twse_crawler.py
-src/financialdata.egg-info/PKG-INFO
-src/financialdata.egg-info/SOURCES.txt
-src/financialdata.egg-info/dependency_links.txt
-src/financialdata.egg-info/top_level.txt

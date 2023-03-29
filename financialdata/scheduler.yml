@@ -1,10 +1,16 @@
 version: '3.0'
 services:
   scheduler:
-    image: crawler:7.2.1
+    image: linsamtw/crawler:7.2.1
     hostname: "twse"
     command: pipenv run python financialdata/scheduler.py
     restart: always
+    # swarm 設定
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints: [node.labels.crawler_scheduler == true]
     environment:
       - TZ=Asia/Taipei
     networks:

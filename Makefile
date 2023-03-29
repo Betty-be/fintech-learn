@@ -1,36 +1,21 @@
 
-# 啟動 mysql
-create-mysql:
-	docker-compose -f mysql.yml up -d
+create-mysql-volume:
+	docker volume create mysql
 
-# 啟動 rabbitmq
-create-rabbitmq:
-	docker-compose -f rabbitmq.yml up -d
+create-network:
+	docker network create --scope=swarm --driver=overlay my_network
 
-# 安裝環境
-install-python-env:
-	pipenv sync
+deploy-mysql:
+	docker stack deploy --with-registry-auth -c mysql.yml mysql
 
-# 啟動 celery, 專門執行 twse queue 列隊的任務，
-run-celery-twse:
-	pipenv run celery -A financialdata.tasks.worker worker --loglevel=info --concurrency=1  --hostname=%h -Q twse
+deploy-rabbitmq:
+	docker stack deploy --with-registry-auth -c rabbitmq.yml rabbitmq
 
-# 啟動 celery, 專門執行 tpex queue 列隊的任務，
-run-celery-tpex:
-	pipenv run celery -A financialdata.tasks.worker worker --loglevel=info --concurrency=1  --hostname=%h -Q tpex
+deploy-crawler:
+	docker stack deploy --with-registry-auth -c financialdata/crawler.yml financialdata
 
-# sent task
-sent-taiwan-stock-price-task:
-	pipenv run python financialdata/producer.py taiwan_stock_price 2021-04-01 2021-04-12
+deploy-crawler-scheduler:
+	docker stack deploy --with-registry-auth -c financialdata/scheduler.yml financialdata
 
-# 建立 dev 環境變數
-gen-dev-env-variable:
-	python genenv.py
-
-# 建立 staging 環境變數
-gen-staging-env-variable:
-	VERSION=STAGING python genenv.py
-
-# 建立 release 環境變數
-gen-release-env-variable:
-	VERSION=RELEASE python genenv.py
+deploy-api:
+	docker stack deploy --with-registry-auth -c api/api.yml api

@@ -1,5 +1,5 @@
 Metadata-Version: 2.1
-Name: financialdata
+Name: api
 Version: 1.0.1
 Summary: financial mining
 Home-page: https://github.com/linsamtw
@@ -17,3 +17,6 @@ Description-Content-Type: text/markdown
 
 # FinMindBook
 FinMind Book
+
+## run
+    pipenv run uvicorn main:app --reload --port 8888
