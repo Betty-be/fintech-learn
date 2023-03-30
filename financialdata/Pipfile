@@ -11,13 +11,15 @@ loguru = "*"
 sqlalchemy = "==1.4.20"
 tqdm = "*"
 pymysql = "==1.0.2"
-financialdata = {editable = true, path = "."}
 celery = "*"
 fastapi = "==0.63.0"
 uvicorn = "==0.14.0"
+pytest-cov = "==2.11.1"
+pytest-mock = "==3.5.1"
+financialdata = {editable = true, path = "."}
 
 [dev-packages]
 black = "*"
 
 [requires]
-python_version = "3.6"
+python_version = "3.10"
