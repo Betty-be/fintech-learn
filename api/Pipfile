@@ -10,6 +10,9 @@ pymysql = "*"
 sqlalchemy = "==1.4.20"
 uvicorn = "*"
 api = {editable = true, path = "."}
+pytest-cov = "==2.11.1"
+pytest-mock = "==3.5.1"
+requests = "*"
 
 [dev-packages]
 
